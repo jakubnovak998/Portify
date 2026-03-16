@@ -14,7 +14,7 @@ export class AuthService {
   readonly isLoggedIn = computed(() => this._currentUser() !== null);
 
   private readonly users$ = this.http
-    .get<MockUser[]>('/assets/data/mock-users.json')
+    .get<MockUser[]>('assets/data/mock-users.json')
     .pipe(shareReplay(1));
 
   login(email: string, password: string): Observable<boolean> {

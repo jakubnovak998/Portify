@@ -1,6 +1,6 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Stock, PortfolioItem, DashboardStats, Trade, HoldingWithPnl } from '../models/stock.model';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { DashboardStats, HoldingWithPnl, PortfolioItem, Stock, Trade } from '../models/stock.model';
 
 function generateEquityCurve(): number[] {
   const points: number[] = [];
@@ -29,30 +29,28 @@ export class MarketService {
   readonly trades = this._trades.asReadonly();
 
   constructor() {
-    this.http.get<Stock[]>('/assets/data/mock-stocks.json').subscribe((data) => {
+    this.http.get<Stock[]>('assets/data/mock-stocks.json').subscribe((data) => {
       this._stocks.set(data);
     });
 
-    this.http.get<PortfolioItem[]>('/assets/data/mock-portfolio.json').subscribe((data) => {
+    this.http.get<PortfolioItem[]>('assets/data/mock-portfolio.json').subscribe((data) => {
       this._portfolio.set(data);
     });
 
-    this.http.get<Trade[]>('/assets/data/mock-trades.json').subscribe((data) => {
-      this._trades.set(
-        data.map((t) => ({ ...t, date: new Date(t.date as unknown as string) }))
-      );
+    this.http.get<Trade[]>('assets/data/mock-trades.json').subscribe((data) => {
+      this._trades.set(data.map((t) => ({ ...t, date: new Date(t.date as unknown as string) })));
     });
   }
 
   readonly portfolioValue = computed(() =>
-    this._portfolio().reduce((sum, item) => sum + item.quantity * item.currentPrice, 0)
+    this._portfolio().reduce((sum, item) => sum + item.quantity * item.currentPrice, 0),
   );
 
   readonly totalPnl = computed(() =>
     this._portfolio().reduce(
       (sum, item) => sum + item.quantity * (item.currentPrice - item.avgPrice),
-      0
-    )
+      0,
+    ),
   );
 
   readonly dashboardStats = computed<DashboardStats>(() => {
@@ -86,13 +84,13 @@ export class MarketService {
       const pnlPercent = (pnl / costBasis) * 100;
       const allocation = (marketValue / this.portfolioValue()) * 100;
       return { ...item, marketValue, costBasis, pnl, pnlPercent, allocation };
-    })
+    }),
   );
 
   readonly totalPnlPercent = computed(() => {
     const totalCost = this._portfolio().reduce(
       (sum, item) => sum + item.quantity * item.avgPrice,
-      0
+      0,
     );
     return totalCost > 0 ? (this.totalPnl() / totalCost) * 100 : 0;
   });
@@ -109,9 +107,7 @@ export class MarketService {
 
   readonly equityCurveAllTimePercent = computed(() => {
     const data = EQUITY_CURVE;
-    return data.length >= 2
-      ? ((data[data.length - 1] - data[0]) / data[0]) * 100
-      : 0;
+    return data.length >= 2 ? ((data[data.length - 1] - data[0]) / data[0]) * 100 : 0;
   });
 
   getEquityCurve(): number[] {

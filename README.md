@@ -34,6 +34,8 @@
 
 ## Live Demo
 
+**[View live demo](https://jakubnovak998.github.io/Portify/)**
+
 > **Demo credentials**
 >
 > - `demo@portify.com` / `demo123`

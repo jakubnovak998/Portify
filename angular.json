@@ -30,7 +30,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/assets",
+                "input": "srcassets",
                 "output": "assets"
               }
             ],
