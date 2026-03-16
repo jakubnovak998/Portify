@@ -1,0 +1,8 @@
+[
+  { "symbol": "AAPL", "type": "buy",  "quantity": 10, "price": 155.00, "date": "2024-01-15", "pnl": 342.50 },
+  { "symbol": "TSLA", "type": "sell", "quantity": 5,  "price": 270.00, "date": "2024-01-22", "pnl": -135.00 },
+  { "symbol": "NVDA", "type": "buy",  "quantity": 8,  "price": 590.00, "date": "2024-02-01", "pnl": 2275.20 },
+  { "symbol": "MSFT", "type": "buy",  "quantity": 15, "price": 375.00, "date": "2024-02-10", "pnl": 609.00 },
+  { "symbol": "GOOGL", "type": "sell","quantity": 12, "price": 158.00, "date": "2024-02-18", "pnl": -27.60 },
+  { "symbol": "AMZN", "type": "buy",  "quantity": 20, "price": 148.00, "date": "2024-03-05", "pnl": 607.00 }
+]
