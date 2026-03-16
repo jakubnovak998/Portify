@@ -27,7 +27,7 @@ export class SvgIconComponent {
         this.svgContent.set(this.sanitizer.bypassSecurityTrustHtml(cache.get(n)!));
         return;
       }
-      this.http.get(`/icons/${n}.svg`, { responseType: 'text' }).subscribe((svg) => {
+      this.http.get(`icons/${n}.svg`, { responseType: 'text' }).subscribe((svg) => {
         cache.set(n, svg);
         this.svgContent.set(this.sanitizer.bypassSecurityTrustHtml(svg));
       });
