@@ -1,0 +1,43 @@
+<div class="table-card">
+  <div class="card-header">
+    <h2>Market Overview</h2>
+    <span class="update-badge">Updated just now</span>
+  </div>
+  <div class="table-wrapper">
+    <table class="stocks-table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Change</th>
+          <th>Change %</th>
+          <th>Volume</th>
+          <th>Market Cap</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (stock of stocks(); track stock.symbol) {
+          <tr>
+            <td>
+              <span class="symbol-badge">{{ stock.symbol }}</span>
+            </td>
+            <td class="stock-name">{{ stock.name }}</td>
+            <td class="font-mono">${{ stock.price | number: '1.2-2' }}</td>
+            <td class="font-mono" [class]="getChangeClass(stock.change)">
+              {{ stock.change >= 0 ? '+' : '' }}{{ stock.change | number: '1.2-2' }}
+            </td>
+            <td>
+              <span class="change-badge" [class]="getChangeClass(stock.changePercent)">
+                {{ stock.changePercent >= 0 ? '+' : ''
+                }}{{ stock.changePercent | number: '1.2-2' }}%
+              </span>
+            </td>
+            <td class="text-muted">{{ stock.volume | formatVolume }}</td>
+            <td class="text-muted">{{ stock.marketCap }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

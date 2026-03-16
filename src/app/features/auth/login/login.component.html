@@ -1,0 +1,93 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <a routerLink="/" class="back-link">
+        <app-svg-icon name="arrow-left"/>
+        Back
+      </a>
+      <div class="brand">
+        <div class="brand-icon">P</div>
+        <span>Portify</span>
+      </div>
+      <h1>Welcome back</h1>
+      <p>Sign in to your trading account</p>
+    </div>
+
+    @if (errorMessage()) {
+      <div class="error-alert">
+        <app-svg-icon name="alert-circle"/>
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <div class="input-wrapper">
+          <app-svg-icon class="input-icon" name="mail"/>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="demo@portify.com"
+            [class.invalid]="emailControl.invalid && emailControl.touched"
+          />
+        </div>
+        @if (emailControl.invalid && emailControl.touched) {
+          <span class="field-error">
+            @if (emailControl.errors?.['required']) { Email is required. }
+            @else if (emailControl.errors?.['email']) { Please enter a valid email. }
+          </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <app-svg-icon class="input-icon" name="lock"/>
+          <input
+            id="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="••••••••"
+            [class.invalid]="passwordControl.invalid && passwordControl.touched"
+          />
+          <button type="button" class="toggle-pw" (click)="togglePassword()">
+            @if (showPassword()) {
+              <app-svg-icon name="eye-off"/>
+            } @else {
+              <app-svg-icon name="eye"/>
+            }
+          </button>
+        </div>
+        @if (passwordControl.invalid && passwordControl.touched) {
+          <span class="field-error">
+            @if (passwordControl.errors?.['required']) { Password is required. }
+            @else if (passwordControl.errors?.['minlength']) { Password must be at least 6 characters. }
+          </span>
+        }
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="isLoading()">
+        @if (isLoading()) {
+          <div class="spinner"></div>
+          Signing in...
+        } @else {
+          Sign In
+        }
+      </button>
+    </form>
+
+    <div class="demo-hint">
+      <p>Try the demo account:</p>
+      <button type="button" class="demo-btn" (click)="fillDemo()">
+        Fill demo credentials
+      </button>
+    </div>
+
+    <div class="auth-footer">
+      Don't have an account?
+      <a routerLink="/register">Create account</a>
+    </div>
+  </div>
+</div>

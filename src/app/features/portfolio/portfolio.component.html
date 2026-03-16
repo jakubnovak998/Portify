@@ -1,0 +1,36 @@
+<div class="app-layout">
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+    <header class="page-header">
+      <div>
+        <h1>Portfolio</h1>
+        <p class="subtitle">Your investment holdings overview</p>
+      </div>
+    </header>
+
+    <app-portfolio-summary
+      [portfolioValue]="portfolioValue()"
+      [totalPnl]="totalPnl()"
+      [totalPnlPercent]="totalPnlPercent()"
+      [holdingsCount]="holdingsWithPnl().length"
+      [bestPerformerSymbol]="bestPerformer().symbol"
+      [bestPerformerPct]="bestPerformer().pct"
+      [worstPerformerSymbol]="worstPerformer().symbol"
+      [worstPerformerPct]="worstPerformer().pct"
+    />
+
+    <div class="portfolio-layout">
+      <app-allocation-chart
+        [holdings]="holdingsWithPnl()"
+        [portfolioValue]="portfolioValue()"
+      />
+      <app-holdings-table
+        [holdings]="holdingsWithPnl()"
+        [portfolioValue]="portfolioValue()"
+        [totalPnl]="totalPnl()"
+        [totalPnlPercent]="totalPnlPercent()"
+      />
+    </div>
+  </main>
+</div>

@@ -1,0 +1,25 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/" class="brand-link">
+      <div class="brand-icon">P</div>
+      <span class="brand-name">Portify</span>
+    </a>
+  </div>
+
+  <div class="navbar-links">
+    @if (isLoggedIn()) {
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">Dashboard</a>
+      <a routerLink="/portfolio" routerLinkActive="active" class="nav-link">Portfolio</a>
+    }
+  </div>
+
+  <div class="navbar-actions">
+    @if (isLoggedIn()) {
+      <span class="user-name">{{ currentUser()?.name }}</span>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    } @else {
+      <a routerLink="/login" class="btn-login">Sign In</a>
+      <a routerLink="/register" class="btn-register">Get Started</a>
+    }
+  </div>
+</nav>

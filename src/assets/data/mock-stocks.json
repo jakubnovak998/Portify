@@ -1,0 +1,10 @@
+[
+  { "symbol": "AAPL", "name": "Apple Inc.", "price": 189.25, "change": 2.34, "changePercent": 1.25, "volume": 58234567, "marketCap": "2.94T" },
+  { "symbol": "TSLA", "name": "Tesla Inc.", "price": 242.80, "change": -5.12, "changePercent": -2.07, "volume": 103456789, "marketCap": "773B" },
+  { "symbol": "MSFT", "name": "Microsoft Corp.", "price": 415.60, "change": 3.85, "changePercent": 0.93, "volume": 22345678, "marketCap": "3.08T" },
+  { "symbol": "AMZN", "name": "Amazon.com Inc.", "price": 178.35, "change": 1.22, "changePercent": 0.69, "volume": 34567890, "marketCap": "1.85T" },
+  { "symbol": "GOOGL", "name": "Alphabet Inc.", "price": 155.72, "change": -0.88, "changePercent": -0.56, "volume": 18976543, "marketCap": "1.94T" },
+  { "symbol": "NVDA", "name": "NVIDIA Corp.", "price": 875.40, "change": 22.50, "changePercent": 2.64, "volume": 45678901, "marketCap": "2.16T" },
+  { "symbol": "META", "name": "Meta Platforms", "price": 502.15, "change": 7.30, "changePercent": 1.47, "volume": 15234567, "marketCap": "1.27T" },
+  { "symbol": "JPM", "name": "JPMorgan Chase", "price": 198.45, "change": -1.20, "changePercent": -0.60, "volume": 9876543, "marketCap": "570B" }
+]

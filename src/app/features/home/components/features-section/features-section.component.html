@@ -1,0 +1,15 @@
+<section class="features">
+  <div class="section-header">
+    <h2>Everything you need to trade professionally</h2>
+    <p>Powerful tools and analytics built for serious traders</p>
+  </div>
+  <div class="features-grid">
+    @for (feature of features; track feature.title) {
+      <div class="feature-card">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    }
+  </div>
+</section>

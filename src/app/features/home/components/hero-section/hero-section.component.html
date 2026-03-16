@@ -1,0 +1,68 @@
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Live Trading Platform
+    </div>
+    <h1 class="hero-title">
+      Trade Smarter with
+      <span class="gradient-text">AI-Powered</span>
+      Analytics
+    </h1>
+    <p class="hero-description">
+      Portify gives you real-time portfolio tracking, advanced analytics, and
+      powerful trading tools — all in one beautiful dashboard.
+    </p>
+    <div class="hero-actions">
+      @if (isLoggedIn()) {
+        <a routerLink="/dashboard" class="btn-primary">
+          Go to Dashboard
+          <app-svg-icon name="arrow-right"/>
+        </a>
+      } @else {
+        <a routerLink="/register" class="btn-primary">
+          Start Trading Free
+          <app-svg-icon name="arrow-right"/>
+        </a>
+        <a routerLink="/login" class="btn-secondary">Sign In</a>
+      }
+    </div>
+    <div class="hero-stats">
+      @for (stat of stats(); track stat.label) {
+        <div class="hero-stat">
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="dashboard-preview">
+      <div class="preview-header">
+        <div class="preview-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="preview-title">Portfolio Overview</span>
+      </div>
+      <div class="preview-stats">
+        @for (stat of previewStats; track stat.label) {
+          <app-preview-stat [label]="stat.label" [value]="stat.value" [change]="stat.change" />
+        }
+      </div>
+      <div class="preview-chart">
+        <div class="chart-line">
+          <app-preview-chart />
+        </div>
+      </div>
+      <div class="preview-stocks">
+        @for (stock of stocks; track stock.symbol) {
+          <app-stock-row [symbol]="stock.symbol" [price]="stock.price" [change]="stock.change" />
+        }
+      </div>
+    </div>
+  </div>
+</section>

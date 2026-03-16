@@ -1,0 +1,122 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header">
+      <a routerLink="/" class="back-link">
+        <app-svg-icon name="arrow-left"/>
+        Back
+      </a>
+      <div class="brand">
+        <div class="brand-icon">P</div>
+        <span>Portify</span>
+      </div>
+      <h1>Create your account</h1>
+      <p>Start trading smarter today — it's free</p>
+    </div>
+
+    @if (errorMessage()) {
+      <div class="error-alert">
+        <app-svg-icon name="alert-circle"/>
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="form-group">
+        <label for="name">Full name</label>
+        <div class="input-wrapper">
+          <app-svg-icon class="input-icon" name="user"/>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="John Doe"
+            [class.invalid]="nameControl.invalid && nameControl.touched"
+          />
+        </div>
+        @if (nameControl.invalid && nameControl.touched) {
+          <span class="field-error">
+            @if (nameControl.errors?.['required']) { Name is required. }
+            @else if (nameControl.errors?.['minlength']) { Name must be at least 2 characters. }
+          </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <div class="input-wrapper">
+          <app-svg-icon class="input-icon" name="mail"/>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="you@example.com"
+            [class.invalid]="emailControl.invalid && emailControl.touched"
+          />
+        </div>
+        @if (emailControl.invalid && emailControl.touched) {
+          <span class="field-error">
+            @if (emailControl.errors?.['required']) { Email is required. }
+            @else if (emailControl.errors?.['email']) { Please enter a valid email. }
+          </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <app-svg-icon class="input-icon" name="lock"/>
+          <input
+            id="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Min. 6 characters"
+            [class.invalid]="passwordControl.invalid && passwordControl.touched"
+          />
+          <button type="button" class="toggle-pw" (click)="togglePassword()">
+            <app-svg-icon name="eye"/>
+          </button>
+        </div>
+        @if (passwordControl.invalid && passwordControl.touched) {
+          <span class="field-error">
+            @if (passwordControl.errors?.['required']) { Password is required. }
+            @else if (passwordControl.errors?.['minlength']) { Password must be at least 6 characters. }
+          </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm password</label>
+        <div class="input-wrapper">
+          <app-svg-icon class="input-icon" name="lock"/>
+          <input
+            id="confirmPassword"
+            [type]="showConfirm() ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            placeholder="Repeat your password"
+            [class.invalid]="confirmPasswordControl.touched && registerForm.errors?.['passwordMismatch']"
+          />
+          <button type="button" class="toggle-pw" (click)="toggleConfirm()">
+            <app-svg-icon name="eye"/>
+          </button>
+        </div>
+        @if (confirmPasswordControl.touched && registerForm.errors?.['passwordMismatch']) {
+          <span class="field-error">Passwords do not match.</span>
+        }
+      </div>
+
+      <button type="submit" class="btn-submit" [disabled]="isLoading()">
+        @if (isLoading()) {
+          <div class="spinner"></div>
+          Creating account...
+        } @else {
+          Create Account
+        }
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      Already have an account?
+      <a routerLink="/login">Sign in</a>
+    </div>
+  </div>
+</div>

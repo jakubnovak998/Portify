@@ -1,0 +1,8 @@
+<section class="stats-banner">
+  @for (stat of stats(); track stat.label) {
+    <div class="stat-item">
+      <span class="stat-num">{{ stat.value }}</span>
+      <span class="stat-lbl">{{ stat.label }}</span>
+    </div>
+  }
+</section>

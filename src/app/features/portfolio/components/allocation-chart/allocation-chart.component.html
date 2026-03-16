@@ -1,0 +1,21 @@
+<div class="allocation-card">
+  <div class="card-header">
+    <h2>Allocation</h2>
+  </div>
+  <div class="chart-container">
+    <canvas #allocationCanvas></canvas>
+    <div class="chart-center">
+      <span class="center-label">Total</span>
+      <span class="center-value">{{ portfolioValue() | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
+    </div>
+  </div>
+  <div class="legend">
+    @for (item of holdings(); track item.symbol) {
+      <div class="legend-item">
+        <span class="legend-dot" [style.background]="item.color"></span>
+        <span class="legend-sym">{{ item.symbol }}</span>
+        <span class="legend-pct">{{ item.allocation | number: '1.1-1' }}%</span>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.ps-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #1a1d27;
+  border-radius: 8px;
+  gap: 8px;
+
+  .ps-sym {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    flex: 1;
+  }
+
+  .ps-p {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .ps-ch {
+    font-size: 12px;
+    min-width: 55px;
+    text-align: right;
+  }
+
+  .green { color: #00d4aa; }
+  .red { color: #ef4444; }
+}

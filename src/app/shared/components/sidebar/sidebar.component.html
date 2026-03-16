@@ -1,0 +1,49 @@
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">P</div>
+    <span class="logo-text">Portify</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    @if (isLoggedIn()) {
+      <a
+        class="nav-item"
+        routerLink="/dashboard"
+        routerLinkActive="active"
+      >
+        <span class="nav-icon">
+          <app-svg-icon name="grid"/>
+        </span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a
+        class="nav-item"
+        routerLink="/portfolio"
+        routerLinkActive="active"
+      >
+        <span class="nav-icon">
+          <app-svg-icon name="box"/>
+        </span>
+        <span class="nav-label">Portfolio</span>
+      </a>
+    }
+  </nav>
+
+  <div class="sidebar-footer">
+    @if (isLoggedIn()) {
+      <div class="user-info">
+        <div class="user-avatar">{{ currentUser()?.name?.charAt(0) }}</div>
+        <div class="user-details">
+          <span class="user-name">{{ currentUser()?.name }}</span>
+          <span class="user-email">{{ currentUser()?.email }}</span>
+        </div>
+      </div>
+      <button class="logout-btn" (click)="logout()">
+        <app-svg-icon name="log-out"/>
+        Logout
+      </button>
+    } @else {
+      <a routerLink="/login" class="login-link">Sign In</a>
+    }
+  </div>
+</aside>

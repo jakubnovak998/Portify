@@ -1,0 +1,33 @@
+<section class="summary-cards">
+  <div class="summary-card main-card">
+    <span class="sc-label">Total Portfolio Value</span>
+    <span class="sc-value large">{{ portfolioValue() | currency }}</span>
+    <div class="sc-pnl" [class]="getPnlClass(totalPnl())">
+      @if (totalPnl() >= 0) {
+        <app-svg-icon name="chevron-up"/>
+      } @else {
+        <app-svg-icon name="chevron-down"/>
+      }
+      {{ totalPnl() | currency }} ({{ totalPnlPercent() | number: '1.2-2' }}%)
+    </div>
+    <span class="sc-hint">Total unrealized P&L</span>
+  </div>
+
+  <div class="summary-card">
+    <span class="sc-label">Holdings</span>
+    <span class="sc-value">{{ holdingsCount() }}</span>
+    <span class="sc-hint">Active positions</span>
+  </div>
+
+  <div class="summary-card">
+    <span class="sc-label">Best Performer</span>
+    <span class="sc-value positive">{{ bestPerformerSymbol() }}</span>
+    <span class="sc-hint positive">+{{ bestPerformerPct() | number: '1.2-2' }}%</span>
+  </div>
+
+  <div class="summary-card">
+    <span class="sc-label">Worst Performer</span>
+    <span class="sc-value negative">{{ worstPerformerSymbol() }}</span>
+    <span class="sc-hint negative">{{ worstPerformerPct() | number: '1.2-2' }}%</span>
+  </div>
+</section>

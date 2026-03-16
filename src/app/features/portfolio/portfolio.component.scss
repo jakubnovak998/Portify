@@ -1,0 +1,315 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #0d0f14;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 240px;
+  padding: 32px;
+  min-width: 0;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+
+  h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: #8b8fa8;
+  }
+}
+
+// Summary Cards
+.summary-cards {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.summary-card {
+  background: #111318;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &.main-card {
+    border-color: rgba(0, 212, 170, 0.15);
+  }
+
+  .sc-label {
+    font-size: 12px;
+    color: #8b8fa8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .sc-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+
+    &.large {
+      font-size: 30px;
+      letter-spacing: -1px;
+    }
+
+    &.positive { color: #00d4aa; }
+    &.negative { color: #ef4444; }
+  }
+
+  .sc-pnl {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    font-weight: 600;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.positive {
+      color: #00d4aa;
+      svg { stroke: #00d4aa; }
+    }
+
+    &.negative {
+      color: #ef4444;
+      svg { stroke: #ef4444; }
+    }
+  }
+
+  .sc-hint {
+    font-size: 12px;
+    color: #8b8fa8;
+
+    &.positive { color: #00d4aa; }
+    &.negative { color: #ef4444; }
+  }
+}
+
+// Portfolio Layout
+.portfolio-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 16px;
+  align-items: start;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Allocation Card
+.allocation-card,
+.holdings-card {
+  background: #111318;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+}
+
+.chart-container {
+  position: relative;
+  height: 240px;
+  margin-bottom: 20px;
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.chart-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+
+  .center-label {
+    display: block;
+    font-size: 11px;
+    color: #8b8fa8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .center-value {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-sym {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    flex: 1;
+  }
+
+  .legend-pct {
+    font-size: 13px;
+    color: #8b8fa8;
+  }
+}
+
+// Holdings Table
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.holdings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  thead tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  th {
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #8b8fa8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: background 0.15s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  td {
+    padding: 14px 12px;
+    color: #c0c4d6;
+    white-space: nowrap;
+  }
+
+  tfoot .total-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    td {
+      padding: 14px 12px;
+      color: #ffffff;
+      font-size: 14px;
+    }
+  }
+}
+
+.symbol-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .sym {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .sym-name {
+    display: block;
+    font-size: 11px;
+    color: #8b8fa8;
+  }
+}
+
+.pnl-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+
+  &.positive {
+    background: rgba(0, 212, 170, 0.1);
+    color: #00d4aa;
+  }
+
+  &.negative {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+  }
+}
+
+.text-muted { color: #8b8fa8; }
+.font-medium { font-weight: 600; }
+
+.positive { color: #00d4aa; }
+.negative { color: #ef4444; }

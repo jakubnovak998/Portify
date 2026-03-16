@@ -1,0 +1,66 @@
+<div class="trade-card">
+  <div class="card-header">
+    <h2>Quick Trade</h2>
+  </div>
+  <form [formGroup]="tradeForm" (ngSubmit)="submitTrade()" class="trade-form">
+    <div class="trade-type-tabs">
+      <button
+        type="button"
+        class="type-tab"
+        [class.active-buy]="tradeForm.get('type')?.value === 'buy'"
+        (click)="tradeForm.patchValue({ type: 'buy' })"
+      >Buy</button>
+      <button
+        type="button"
+        class="type-tab"
+        [class.active-sell]="tradeForm.get('type')?.value === 'sell'"
+        (click)="tradeForm.patchValue({ type: 'sell' })"
+      >Sell</button>
+    </div>
+
+    <div class="form-group">
+      <label>Symbol</label>
+      <select formControlName="symbol" class="trade-select">
+        @for (sym of symbols; track sym) {
+          <option [value]="sym">{{ sym }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="price-display">
+      <span class="price-label">Current Price</span>
+      <span class="price-value">{{ currentPrice() | currency }}</span>
+    </div>
+
+    <div class="form-group">
+      <label>Quantity</label>
+      <input
+        type="number"
+        formControlName="quantity"
+        min="1"
+        class="trade-input"
+      />
+    </div>
+
+    <div class="total-display">
+      <span>Estimated Total</span>
+      <span class="total-value">{{ estimatedTotal() | currency }}</span>
+    </div>
+
+    @if (tradeSuccess()) {
+      <div class="trade-success">
+        ✓ {{ tradeSuccess() }}
+      </div>
+    }
+
+    <button
+      type="submit"
+      class="trade-btn"
+      [class.sell-btn]="tradeForm.get('type')?.value === 'sell'"
+      [disabled]="tradeForm.invalid"
+    >
+      {{ tradeForm.get('type')?.value === 'buy' ? 'Buy' : 'Sell' }}
+      {{ tradeForm.get('symbol')?.value }}
+    </button>
+  </form>
+</div>

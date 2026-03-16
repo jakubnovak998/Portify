@@ -1,0 +1,12 @@
+<div class="chart-card">
+  <div class="card-header">
+    <h2>Equity Curve</h2>
+    <div class="chart-badge" [class.positive]="allTimePercent() >= 0" [class.negative]="allTimePercent() < 0">
+      <app-svg-icon [name]="allTimePercent() >= 0 ? 'trending-up' : 'trending-down'"/>
+      {{ allTimePercent() >= 0 ? '+' : '' }}{{ allTimePercent() | number: '1.1-1' }}% all time
+    </div>
+  </div>
+  <div class="chart-wrapper">
+    <canvas #equityCanvas></canvas>
+  </div>
+</div>

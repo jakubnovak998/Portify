@@ -1,0 +1,64 @@
+<div class="holdings-card">
+  <div class="card-header">
+    <h2>Holdings</h2>
+  </div>
+  <div class="table-wrapper">
+    <table class="holdings-table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Qty</th>
+          <th>Avg Price</th>
+          <th>Current</th>
+          <th>Cost Basis</th>
+          <th>Market Value</th>
+          <th>Unrealized P&L</th>
+          <th>Return %</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of holdings(); track item.symbol) {
+          <tr>
+            <td>
+              <div class="symbol-cell">
+                <span class="color-dot" [style.background]="item.color"></span>
+                <div>
+                  <span class="sym">{{ item.symbol }}</span>
+                  <span class="sym-name">{{ item.name }}</span>
+                </div>
+              </div>
+            </td>
+            <td>{{ item.quantity }}</td>
+            <td class="text-muted">{{ item.avgPrice | currency }}</td>
+            <td>{{ item.currentPrice | currency }}</td>
+            <td class="text-muted">{{ item.costBasis | currency }}</td>
+            <td class="font-medium">{{ item.marketValue | currency }}</td>
+            <td [class]="getPnlClass(item.pnl)">
+              {{ item.pnl >= 0 ? '+' : '' }}{{ item.pnl | currency }}
+            </td>
+            <td>
+              <span class="pnl-badge" [class]="getPnlClass(item.pnlPercent)">
+                {{ item.pnlPercent >= 0 ? '+' : '' }}{{ item.pnlPercent | number: '1.2-2' }}%
+              </span>
+            </td>
+            <td class="text-muted">{{ item.allocation | number: '1.1-1' }}%</td>
+          </tr>
+        }
+      </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="5"><strong>Total</strong></td>
+          <td><strong>{{ portfolioValue() | currency }}</strong></td>
+          <td [class]="getPnlClass(totalPnl())">
+            <strong>{{ totalPnl() >= 0 ? '+' : '' }}{{ totalPnl() | currency }}</strong>
+          </td>
+          <td [class]="getPnlClass(totalPnlPercent())">
+            <strong>{{ totalPnlPercent() >= 0 ? '+' : '' }}{{ totalPnlPercent() | number: '1.2-2' }}%</strong>
+          </td>
+          <td class="text-muted">100%</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

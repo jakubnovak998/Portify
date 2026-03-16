@@ -1,0 +1,67 @@
+<section class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon teal">
+      <app-svg-icon name="dollar-sign"/>
+    </div>
+    <div class="stat-content">
+      <span class="stat-label">Portfolio Value</span>
+      <span class="stat-value">{{ portfolioValue() | currency }}</span>
+      <span class="stat-sub positive">+{{ (totalPnl() / (portfolioValue() - totalPnl()) * 100) | number: '1.2-2' }}% total return</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon blue">
+      <app-svg-icon name="activity"/>
+    </div>
+    <div class="stat-content">
+      <span class="stat-label">Total Trades</span>
+      <span class="stat-value">{{ stats().totalTrades }}</span>
+      <span class="stat-sub">All time</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon green">
+      <app-svg-icon name="check-circle"/>
+    </div>
+    <div class="stat-content">
+      <span class="stat-label">Win Rate</span>
+      <span class="stat-value">{{ stats().winRate | number: '1.1-1' }}%</span>
+      <span class="stat-sub positive">Above average</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon purple">
+      <app-svg-icon name="bar-chart"/>
+    </div>
+    <div class="stat-content">
+      <span class="stat-label">Profit Factor</span>
+      <span class="stat-value">{{ stats().profitFactor | number: '1.2-2' }}</span>
+      <span class="stat-sub">Wins / Losses ratio</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon green">
+      <app-svg-icon name="trending-up"/>
+    </div>
+    <div class="stat-content">
+      <span class="stat-label">Avg Win</span>
+      <span class="stat-value positive">{{ stats().avgWin | currency }}</span>
+      <span class="stat-sub">Per winning trade</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon red">
+      <app-svg-icon name="trending-down"/>
+    </div>
+    <div class="stat-content">
+      <span class="stat-label">Avg Loss</span>
+      <span class="stat-value negative">-{{ stats().avgLoss | currency }}</span>
+      <span class="stat-sub">Per losing trade</span>
+    </div>
+  </div>
+</section>

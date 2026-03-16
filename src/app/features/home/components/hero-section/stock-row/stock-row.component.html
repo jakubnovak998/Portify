@@ -1,0 +1,5 @@
+<div class="ps-row">
+  <span class="ps-sym">{{ symbol() }}</span>
+  <span class="ps-p" [class.green]="positive()" [class.red]="!positive()">{{ price() }}</span>
+  <span class="ps-ch" [class.green]="positive()" [class.red]="!positive()">{{ change() }}</span>
+</div>

@@ -1,0 +1,7 @@
+<div class="preview-stat" [class.green]="!!change()">
+  <span class="ps-label">{{ label() }}</span>
+  <span class="ps-value">{{ value() }}</span>
+  @if (change()) {
+    <span class="ps-change">{{ change() }}</span>
+  }
+</div>
