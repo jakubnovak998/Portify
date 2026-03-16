@@ -1,0 +1,7 @@
+[
+  { "symbol": "AAPL", "name": "Apple Inc.", "quantity": 50, "avgPrice": 165.00, "currentPrice": 189.25, "color": "#00d4aa" },
+  { "symbol": "NVDA", "name": "NVIDIA Corp.", "quantity": 20, "avgPrice": 620.00, "currentPrice": 875.40, "color": "#3b82f6" },
+  { "symbol": "MSFT", "name": "Microsoft Corp.", "quantity": 30, "avgPrice": 380.00, "currentPrice": 415.60, "color": "#8b5cf6" },
+  { "symbol": "TSLA", "name": "Tesla Inc.", "quantity": 40, "avgPrice": 260.00, "currentPrice": 242.80, "color": "#ef4444" },
+  { "symbol": "AMZN", "name": "Amazon.com Inc.", "quantity": 25, "avgPrice": 155.00, "currentPrice": 178.35, "color": "#f59e0b" }
+]
