@@ -11,24 +11,24 @@
 
 ### Landing Page
 
-![Landing Page 1](docs/screenshots/1.png)
-![Landing Page 2](docs/screenshots/2.png)
+![Landing Page 1](docs/screenshots/1.PNG)
+![Landing Page 2](docs/screenshots/2.PNG)
 
 ### Sign up page
 
-![Sign up](docs/screenshots/3.png)
+![Sign up](docs/screenshots/3.PNG)
 
 ### Login page
 
-![Login](docs/screenshots/4.png)
+![Login](docs/screenshots/4.PNG)
 
 ### Dashboard
 
-![Dashboard 1](docs/screenshots/5.png)
+![Dashboard 1](docs/screenshots/5.PNG)
 
 ### Portfolio
 
-![Portfolio](docs/screenshots/7.png)
+![Portfolio](docs/screenshots/7.PNG)
 
 ---
 
